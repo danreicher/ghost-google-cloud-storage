@@ -27,12 +27,12 @@ class GStore extends BaseStore {
     save(image) {
         if (!options) return Promise.reject('google cloud storage is not configured');
 
-        var targetDir = 'content/',
+        var targetDir = 'www/',
         googleStoragePath = `http${this.insecure?'':'s'}://${this.assetDomain}/`,
         targetFilename;
 
         return new Promise((resolve, reject) => {
-            this.getUniqueFileName(image, targetDir).then(targetFilename => {
+            this.getFilename(image, targetDir).then(targetFilename => {
                 var opts = {
                     destination: targetDir + targetFilename,
                     metadata: {
@@ -49,6 +49,10 @@ class GStore extends BaseStore {
         });
     }
 
+    getFilename(image, targetDirectory) {
+        return image.name;
+    }
+    
     // middleware for serving the files
     serve() {
         // a no-op, these are absolute URLs
