@@ -27,7 +27,7 @@ class GStore extends BaseStore {
     save(image) {
         if (!options) return Promise.reject('google cloud storage is not configured');
 
-        var targetDir = this.getTargetDir(),
+        var targetDir = 'content',
         googleStoragePath = `http${this.insecure?'':'s'}://${this.assetDomain}/`,
         targetFilename;
 
