@@ -32,7 +32,7 @@ class GStore extends BaseStore {
         targetFilename;
 
         return new Promise((resolve, reject) => {
-            this.getUniqueFilename(image, targetDir).then(targetFilename => {
+            this.getUniqueFileName(image, targetDir).then(targetFilename => {
                 var opts = {
                     destination: targetFilename,
                     metadata: {
