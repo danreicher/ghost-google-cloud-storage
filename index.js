@@ -42,11 +42,12 @@ class GStore extends BaseStore {
                 };
                 return this.bucket.upload(image.path, opts);
             }).then(function (data) {
-                return resolve(googleStoragePath + targetDir + targetFilename);
+                return resolve(googleStoragePath + targetDir + data.name);
             }).catch(function (e) {
                 return reject(e);
             });
         });
+
     }
 
     // middleware for serving the files
