@@ -32,7 +32,7 @@ class GStore extends BaseStore {
         targetFilename;
 
         return new Promise((resolve, reject) => {
-            getFilename(image, targetDir).then(targetFilename => {
+            this.getUniqueFilename(image, targetDir).then(targetFilename => {
                 var opts = {
                     destination: targetFilename,
                     metadata: {
@@ -49,10 +49,6 @@ class GStore extends BaseStore {
         });
     }
 
-    getFilename(image, targetDirectory) {
-        return image.name;
-    }
-    
     // middleware for serving the files
     serve() {
         // a no-op, these are absolute URLs
