@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thombuchi/ghost-google-cloud-storage.git"
+    "url": "https://github.com/danreicher/ghost-google-cloud-storage.git"
   },
   "keywords": [
     "ghost",
@@ -17,15 +17,15 @@
     "plugin",
     "blog"
   ],
-  "author": "Thomas Büchi Sagredo <thombuchi@gmail.com>)",
+  "author": "Daniel Reicher <danreicher@gmail.com>)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thombuchi/ghost-google-cloud-storage/issues"
+    "url": "https://github.com/danreicher/ghost-google-cloud-storage/issues"
   },
-  "homepage": "https://github.com/thombuchi/ghost-google-cloud-storage",
+  "homepage": "https://github.com/danreicher/ghost-google-cloud-storage",
   "dependencies": {
     "@google-cloud/storage": "^1.3.1",
     "bluebird": "^3.1.1",
-    "ghost-storage-base": "0.0.1"
+    "ghost-storage-base": "^0.0.2"
   }
 }
