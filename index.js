@@ -27,7 +27,7 @@ class GStore extends BaseStore {
     save(image) {
         if (!options) return Promise.reject('google cloud storage is not configured');
 
-        var targetDir = 'www/',
+        var targetDir = this.getTargetDir(), //'www/',
         googleStoragePath = `http${this.insecure?'':'s'}://${this.assetDomain}/`,
         targetFilename;
 
@@ -42,7 +42,7 @@ class GStore extends BaseStore {
                 };
                 return this.bucket.upload(image.path, opts);
             }).then(function (data) {
-                return resolve(googleStoragePath + targetDir + data.name);
+                return resolve(googleStoragePath + targetDir + '/' + image.name);
             }).catch(function (e) {
                 return reject(e);
             });
