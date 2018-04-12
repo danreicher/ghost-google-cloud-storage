@@ -39,7 +39,8 @@ class GStore extends BaseStore {
                     destination: targetFilename,
                     metadata: {
                         cacheControl: `public, max-age=${this.maxAge}`,
-			contentType: mimeType
+			contentType: mimeType,
+			contentDisposition: 'inline'
                     },
                     public: true
                 };
