@@ -3,6 +3,7 @@
 var storage     = require('@google-cloud/storage'),
     BaseStore   = require('ghost-storage-base'),
     Promise     = require('bluebird'),
+    mime	= require('mime-types'),
     options     = {};
 
 class GStore extends BaseStore {
@@ -27,16 +28,19 @@ class GStore extends BaseStore {
     save(image) {
         if (!options) return Promise.reject('google cloud storage is not configured');
 
-        var targetDir = this.getTargetDir(),
+        var targetDir = this.getTargetDir(), //'www/',
         googleStoragePath = `http${this.insecure?'':'s'}://${this.assetDomain}/`,
         targetFilename;
 
         return new Promise((resolve, reject) => {
             this.getUniqueFileName(image, targetDir).then(targetFilename => {
-                var opts = {
+                var mimeType = mime.lookup(image.name) || 'application/octet-stream';
+		var opts = {
                     destination: targetFilename,
                     metadata: {
-                        cacheControl: `public, max-age=${this.maxAge}`
+                        cacheControl: 'public, max-age=${this.maxAge}',
+			contentType: mimeType,
+			gzip: true
                     },
                     public: true
                 };
